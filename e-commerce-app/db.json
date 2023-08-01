@@ -1,0 +1,14 @@
+{
+    "users":[
+        {
+            "id": 1,
+            "email": "johndoe@gmail.com",
+            "phone": "0723122877",
+            "password": "123456"
+        }
+    ],
+
+    "products":[
+        
+    ]
+}
