@@ -6,7 +6,6 @@ const ItemList = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Fetch item data from the API or JSON file
     fetch('http://localhost:4001/products')
       .then((response) => response.json())
       .then((data) => setItems(data)) 
