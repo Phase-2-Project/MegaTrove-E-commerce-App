@@ -1,16 +1,17 @@
-//import React from "react";
+
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
+
+const BASE_URL = 'http://ecommerce.muersolutions.com/api/v1';
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4001/products')
+    // Fetch item data from the API
+    fetch(`${BASE_URL}/products`)
       .then((response) => response.json())
-      .then((data) => setItems(data)) 
-      .then((data) => console.log(data) )
-
+      .then((items) => setItems(items))
 
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -18,10 +19,18 @@ const ItemList = () => {
   return (
     <div className="item-list">
       {items.map((item) => (
-        <Item key={item.name} item={item} />
+        <React.Fragment key= {item.id}>
+        <Item  item={item} />
+        </React.Fragment>
+        
       ))}
     </div>
   );
 };
 
 export default ItemList;
+
+
+
+
+

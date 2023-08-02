@@ -1,14 +1,18 @@
 import React from 'react';
 
-const Item = ({ item }) => {
+function Item({ item, product_name, product_description, product_full_image, unit_price }) {
   return (
     <div className="item">
-      <img src={item.image} alt={item.title} />
-      <h3>{item.title}</h3>
-      <p>{item.description}</p>
-      <p>${item.price}</p>
+      
+      {item.product_full_image && <img src={item.product_full_image} alt={item.product_name} />}
+      <h3>{item.product_name}</h3>
+      <p>Price: ${item.unit_price}</p>
+      
+      <button>Add to Cart</button>
     </div>
   );
-};
+}
 
 export default Item;
+
+

@@ -1,16 +1,19 @@
+
 import React, { useEffect, useState } from 'react';
+
+const BASE_URL = 'http://ecommerce.muersolutions.com/api/v1';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Fetch category data from the API or JSON file
-    fetch('http://localhost:4001/products')
+    // Fetch category data from the API
+    fetch(`${BASE_URL}/products`)
       .then((response) => response.json())
       .then((data) => {
-        if (data && data.products) {
+        if (data && data.data) {
           // Extract category names from the fetched data and set them in the state
-          const categoryNames = data.products.map((product) => product.name);
+          const categoryNames = data.data.products.map((product) => product.name);
           setCategories(categoryNames);
         }
       })
