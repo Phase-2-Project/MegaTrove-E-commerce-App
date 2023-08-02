@@ -1,15 +1,17 @@
-import React, { useState} from 'react'
+import React, {useState} from 'react'
+import "./accounts.css"
 
 function SignUp(){
     const [formData, setFormData] = useState({
+        first_name:"",
+        last_name:"",
         email: "",
-        phone: "",
         password:""
     })
 
     function HandleSubmit(e){
         e.preventDefault()
-            fetch('http://localhost:4001/users', {
+            fetch('http://ecommerce.muersolutions.com/api/v1/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,31 +32,42 @@ function SignUp(){
       
     }
     return (
-        <div>
+        <div >
             <form onSubmit={HandleSubmit}>
-                <h1>Sign Up</h1>
-                <label htmlFor="email">Email</label>
-                <input
+            <table>
+            <tr><th>Create Account</th></tr>
+                <tr><td><label htmlFor="first_name">First Name:</label></td>
+                <td><input
+                    type='text'
+                    id='first_name'
+                    value={formData.first_name}
+                    onChange={handleChange}
+                /></td></tr>
+                <tr><td><label htmlFor="last_name">Last Name:</label></td>
+                <td><input
+                    type='text'
+                    id='last_name'
+                    value={formData.last_name}
+                    onChange={handleChange}
+                /></td></tr>
+                <tr><td><label htmlFor="email">Email</label></td>
+                <td><input
                     type='email'
                     id='email'
                     value={formData.email}
                     onChange={handleChange}
-                />
-                <label htmlFor="phone">Phone No.</label>
-                <input
-                    type='text'
-                    id='phone'
-                    value={formData.phone}
-                    onChange={handleChange}
-                />
-            <label htmlFor="password">Password</label>
-                <input
+                /></td></tr>
+                
+            <tr><td><label htmlFor="password">Password</label></td>
+                <td><input
                     type='password'
                     id='password'
                     value={formData.password}
                     onChange={handleChange}
-                />
-                <input type="submit" value="Sign Up"/>
+                /></td></tr>
+                <tr><td><input type="submit" value="Sign Up"/></td></tr>
+            </table>
+                
             </form>
         </div>
     )
