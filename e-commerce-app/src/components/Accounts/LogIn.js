@@ -1,24 +1,30 @@
 import React, {useState} from "react";
-
+import {AuthProvider, useSignIn} from "react-auth-kit"
 function Login(){
-    const baseURL = 'http://ecommerce.muersolutions.com/api/v1/user/login'
-
+    const singIn= useSignIn()
     const [formData, setFormData] = useState({
         email: "",
         password:""
     })
-    function HandleSubmit(e){
+    function HandleSubmit(values){
         e.preventDefault()
-            fetch(baseURL, {
+            const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login'+values, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error))
+            singIn({
+                token: response.data.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: {email: values.email, password: values.password}
+            })
+
+            // .then(response => response.json())
+            // .then(data => console.log(data))
+            // .catch(error => console.log(error))
     }
     function handleChange(event){
         const key = event.target.id

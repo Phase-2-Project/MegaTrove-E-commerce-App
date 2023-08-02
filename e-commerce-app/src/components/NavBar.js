@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
+import {Link, Route, Routes} from 'react-router-dom';
 import "./Nav.css"
-import { BsCart2 } from "react-icons/bs"
+//import { BsCart2 } from "react-icons/bs"
 
 function NavBar() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,17 +23,27 @@ function NavBar() {
       {/* Cart-Icon */}
       <div className="cart-icon">
         <a href="#">
-            <BsCart2 className="nav-icon" color="black"/>
+            {/* <BsCart2 className="nav-icon" color="black"/> */}
         </a>
       </div>
       {/* Sign Up Button */}
       <div className="sign-in">
         <button>Sign Up</button>
       </div>
-      {/* Login Button */}
+     
+      <div>
+      {/* 👇️ react router link */}
+       {/* Login Button */}
+      <Link to="/signup">
       <div className="log-in">
         <button>Login</button>
       </div>
+      </Link>
+
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </div>
     </div>
   );
 }
