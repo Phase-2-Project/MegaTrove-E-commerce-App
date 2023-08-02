@@ -5,6 +5,18 @@
       "email": "johndoe@gmail.com",
       "phone": "0723122877",
       "password": "123456"
+    },
+    {
+      "email": "davidjames@gmail.com",
+      "phone": "0712345678",
+      "password": "dfghjk",
+      "id": 2
+    },
+    {
+      "email": "davidjames@gmail.com",
+      "phone": "0712345678",
+      "password": "dfghjk",
+      "id": 3
     }
   ],
   "products": [
@@ -21,19 +33,4 @@
       "description": "This is one of the speediest bikes available"
     }
   ]
-    },
-    {
-      "email": "davidjames@gmail.com",
-      "phone": "0712345678",
-      "password": "dfghjk",
-      "id": 2
-    },
-    {
-      "email": "davidjames@gmail.com",
-      "phone": "0712345678",
-      "password": "dfghjk",
-      "id": 3
-    }
-  ],
-  "products": []
 }
