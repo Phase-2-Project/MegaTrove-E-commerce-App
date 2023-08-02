@@ -1,28 +1,18 @@
-import React, { useState } from "react";
+import React from 'react';
 
-function Item({ item, onAddToCart }){
-    const [showDescription, setShowDescription] = useState(false);
-
-  const { id, name, price, description } = item;
-
-  const handleAddToCart = () => {
-    onAddToCart(item);
-  };
-
-  const handleShowDescription = () => {
-    setShowDescription(!showDescription);
-  };
-    return(
-        <div className="item">
-             <h2>{name}</h2>
-      <p>Price: ${price}</p>
-      {showDescription && <p>{description}</p>}
-      <button onClick={handleAddToCart}>Add to Cart</button>
-      <button onClick={handleShowDescription}>
-        {showDescription ? 'Hide Description' : 'Show Description'}
-      </button>
-
-        </div>
-    )
+function Item({ item, product_name, product_description, product_full_image, unit_price }) {
+  return (
+    <div className="item">
+      
+      {item.product_full_image && <img src={item.product_full_image} alt={item.product_name} />}
+      <h3>{item.product_name}</h3>
+      <p>Price: ${item.unit_price}</p>
+      
+      <button>Add to Cart</button>
+    </div>
+  );
 }
-export default Item
+
+export default Item;
+
+
