@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {link, useRoutes} from "react-router-dom"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart";
 import SignUp from "./Accounts/SignUp";
@@ -22,7 +23,11 @@ function NavBar (){
                 <Cart />
             </div>
             <div className="Account">
-                <SignUp />
+                <link to= "SignUp">Sign Up</link>
+                <link to="LogIn">Login</link>np
+                <Routes>
+                    <Route path="/Accounts/SignUp" component={SignUp}/><Route/>
+                </Routes>
             </div>
         </header>
     )
