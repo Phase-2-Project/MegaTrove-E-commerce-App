@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (item) => {
-    setCartItems((prevCartItems) => [...prevCartItems, item]);
+function Cart({ cartItems, removeFromCart }) {
+  const handleRemoveFromCart = (itemId) => {
+    removeFromCart(itemId);
   };
 
   return (
     <div className="cart">
       <h2>Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p>Your cart is empty.</p>
       ) : (
         <ul>
           {cartItems.map((item) => (
-            <li key={item.id}>{item.name} - ${item.price}</li>
+            <li key={item.id}>
+              <img src={item.product_full_image} alt={item.product_name} />
+              <div>
+                <h3>{item.product_name}</h3>
+                <p>Price: ${item.unit_price}</p>
+                <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+              </div>
+            </li>
           ))}
         </ul>
       )}

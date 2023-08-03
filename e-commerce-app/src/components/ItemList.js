@@ -4,7 +4,7 @@ import Item from './Item';
 
 const BASE_URL = 'http://ecommerce.muersolutions.com/api/v1';
 
-const ItemList = () => {
+const ItemList = ({ addToCart }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ItemList = () => {
     <div className="item-list">
       {items.map((item) => (
         <React.Fragment key= {item.id}>
-        <Item  item={item} />
+        <Item  item={item}  addToCart={addToCart}/>
         </React.Fragment>
         
       ))}
