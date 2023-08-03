@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import {Link, Route, Routes} from 'react-router-dom';
+import Cart from './Cart';
+import SignUp from "./Accounts/SignUp";
 import "./Nav.css"
 //import { BsCart2 } from "react-icons/bs"
 
-function NavBar() {
+function NavBar({ cartItems, addToCart, removeFromCart }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -22,9 +24,14 @@ function NavBar() {
       </div>
       {/* Cart-Icon */}
       <div className="cart-icon">
-        <a href="#">
+      <Link to="/cart">
+      <span className="cart-badge">{cartItems.length}</span>
             {/* <BsCart2 className="nav-icon" color="black"/> */}
-        </a>
+            <img
+            src="" // Replace with the path to your cart icon image
+            alt="Cart"
+          />
+            </Link>
       </div>
       {/* Sign Up Button */}
       <div className="sign-in">
@@ -42,6 +49,10 @@ function NavBar() {
 
       <Routes>
         <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/cart"
+          element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />}
+        />
       </Routes>
     </div>
     </div>
