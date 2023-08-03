@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import {Link, Route, Routes, Navigate} from 'react-router-dom';
+import {Link, Route, Routes } from 'react-router-dom';
 import "./Nav.css"
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
@@ -24,9 +24,9 @@ function NavBar() {
       </div>
       {/* Cart-Icon */}
       <div className="cart-icon">
-        <a href="#">
+        {/* <a href="#"> */}
             {/* <BsCart2 className="nav-icon" color="black"/> */}
-        </a>
+        {/* </a> */}
       </div>
       {/* 👇️ react router link */}
       <div>
