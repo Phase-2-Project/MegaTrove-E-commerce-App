@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import {AuthProvider, useSignIn} from "react-auth-kit"
-function Login(){
+import {useSignIn} from "react-auth-kit"
+function LogIn(){
     const singIn= useSignIn()
     const [formData, setFormData] = useState({
         email: "",
         password:""
     })
     function HandleSubmit(values){
-        e.preventDefault()
+        values.preventDefault()
             const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login'+values, {
                 method: 'POST',
                 headers: {
@@ -34,6 +34,7 @@ function Login(){
         })
     }
     return (
+        <div id="login">
         <form onSubmit={HandleSubmit}>
             <table>
             <tr><td><label htmlFor="email">Email</label></td>
@@ -54,5 +55,7 @@ function Login(){
                 <tr><td><input type="submit" value="Sign Up"/></td></tr>
             </table>
         </form>
+        </div>
     )
 }
+export default LogIn

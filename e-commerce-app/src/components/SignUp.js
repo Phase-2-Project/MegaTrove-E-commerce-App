@@ -32,7 +32,7 @@ function SignUp(){
       
     }
     return (
-        <div >
+        <div id="signup">
             <form onSubmit={HandleSubmit}>
             <table>
             <tr><th>Create Account</th></tr>

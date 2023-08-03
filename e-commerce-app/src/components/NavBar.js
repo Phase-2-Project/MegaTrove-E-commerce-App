@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import {Link, Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes, Navigate} from 'react-router-dom';
 import "./Nav.css"
-//import { BsCart2 } from "react-icons/bs"
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
+
 
 function NavBar() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,24 +28,23 @@ function NavBar() {
             {/* <BsCart2 className="nav-icon" color="black"/> */}
         </a>
       </div>
-      {/* Sign Up Button */}
-      <div className="sign-in">
-        <button>Sign Up</button>
-      </div>
-     
-      <div>
       {/* 👇️ react router link */}
-       {/* Login Button */}
-      <Link to="/signup">
-      <div className="log-in">
-        <button>Login</button>
-      </div>
+      <div>
+       {/* Sign Up Button */}
+      <Link to="/signup" className="sign-in">
+        <button>Sign Up</button>
       </Link>
-
-      <Routes>
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
     </div>
+      <div>
+       {/* Login Button */}
+      <Link to="/login" className="log-in">
+        <button>Login</button>
+      </Link>
+    </div>
+    <Routes>
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<LogIn/>} />
+      </Routes>    
     </div>
   );
 }
