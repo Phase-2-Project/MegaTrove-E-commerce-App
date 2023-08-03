@@ -29,3 +29,6 @@ function Cart({ cartItems, removeFromCart }) {
 }
 
 export default Cart;
+
+
+

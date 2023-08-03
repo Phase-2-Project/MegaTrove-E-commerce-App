@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
 import "./App.css";
+import Cart from "./components/Cart"; // Import the Cart component
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -25,3 +26,7 @@ const App = () => {
 }
 
 export default App;
+
+
+
+

@@ -20,7 +20,7 @@ const ItemList = ({ addToCart }) => {
     <div className="item-list">
       {items.map((item) => (
         <React.Fragment key= {item.id}>
-        <Item  item={item}  addToCart={addToCart}/>
+        <Item  item={item} addToCart={addToCart}/>
         </React.Fragment>
         
       ))}
@@ -29,8 +29,5 @@ const ItemList = ({ addToCart }) => {
 };
 
 export default ItemList;
-
-
-
 
 
