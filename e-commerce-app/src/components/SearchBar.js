@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = ({searchTerm, setSearchTerm}) => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
 
     return (
         <div>
