@@ -4,7 +4,9 @@ import {Link, Route, Routes} from 'react-router-dom';
 import Cart from './Cart';
 import SignUp from "./Accounts/SignUp";
 import "./Nav.css"
-//import { BsCart2 } from "react-icons/bs"
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
+
 
 function NavBar({ cartItems, addToCart, removeFromCart }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,18 +35,11 @@ function NavBar({ cartItems, addToCart, removeFromCart }) {
           />
             </Link>
       </div>
-      {/* Sign Up Button */}
-      <div className="sign-in">
-        <button>Sign Up</button>
-      </div>
-     
-      <div>
       {/* 👇️ react router link */}
-       {/* Login Button */}
-      <Link to="/signup">
-      <div className="log-in">
-        <button>Login</button>
-      </div>
+      <div>
+       {/* Sign Up Button */}
+      <Link to="/signup" className="sign-in">
+        <button>Sign Up</button>
       </Link>
 
       <Routes>
@@ -55,6 +50,16 @@ function NavBar({ cartItems, addToCart, removeFromCart }) {
         />
       </Routes>
     </div>
+      <div>
+       {/* Login Button */}
+      <Link to="/login" className="log-in">
+        <button>Login</button>
+      </Link>
+    </div>
+    <Routes>
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<LogIn/>} />
+      </Routes>    
     </div>
   );
 }
