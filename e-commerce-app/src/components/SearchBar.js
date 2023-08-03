@@ -2,12 +2,6 @@ import React from "react";
 
 const SearchBar = ({searchTerm, setSearchTerm}) => {
 
-    
-   // filter items based on search term
-//    const filteredItems = items.filter((item) => {
-//     item.product_name.toLowerCase().includes(searchTerm.toLowerCase);
-//   });
-
     return (
         <div>
             <input 
