@@ -1,5 +1,5 @@
 import React from 'react';
-// import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -15,11 +15,11 @@ const Footer = () => {
          <p> a diverse collection to cater to every taste and vibe.</p>
         <p>Follow us</p>
 
-        {/* <div className="social-icons">
+        <div className="social-icons">
           <FaFacebook className="icon" />
           <FaInstagram className="icon" />
           <FaTwitter className="icon" />
-        </div> */}
+        </div>
 
 
       </div>
