@@ -35,12 +35,12 @@ function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
         <button>Sign Up</button>
       </Link>
 
-      <Routes>
+      {/* <Routes>
         <Route
           path="/cart"
           element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />}
         />
-      </Routes>
+      </Routes> */}
     </div>
       <div>
        {/* Login Button */}
