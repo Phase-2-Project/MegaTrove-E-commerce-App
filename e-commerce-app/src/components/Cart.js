@@ -19,8 +19,10 @@ function Cart({ cartItems, removeFromCart }) {
               <img src={item.product_full_image} alt={item.product_name} />
               <div>
                 <h3>{item.product_name}</h3>
-                <p>Price: ${item.unit_price}</p>
+                <p>Price: Ksh.{item.unit_price}</p>
+                <div className="add-cart">
                 <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+                </div>
               </div>
             </li>
           ))}

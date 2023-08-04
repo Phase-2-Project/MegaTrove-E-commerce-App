@@ -41,9 +41,9 @@
     color: #666;
     margin-bottom: 5px;
   }
-  
-  button {
-    background-color: #ff4500;
+  /* #ff4500 */
+ .add-cart button {
+    background-color: #071101;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -51,7 +51,7 @@
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #ff6b3d;
+  .add-cart button:hover {
+    background-color: #7fa569;
   }
   

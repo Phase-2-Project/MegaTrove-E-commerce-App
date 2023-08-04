@@ -17,7 +17,7 @@ function CartPage({ cartItems, removeFromCart }) {
       <h2>Cart Page</h2>
       <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
       <div>
-        <h3>Total Cost: ${calculateTotalCost()}</h3>
+        <h3>Total Cost: Ksh.{calculateTotalCost()}</h3>
       </div>
     </div>
   );
