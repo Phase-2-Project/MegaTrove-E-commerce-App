@@ -5,7 +5,7 @@ import Cart from './Cart';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, addToCart, removeFromCart, searchTerm, setSearchTerm }) {
+function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
 
   return (
     <div className="navbar">
@@ -35,12 +35,12 @@ function NavBar({ cartItems, addToCart, removeFromCart, searchTerm, setSearchTer
         <button>Sign Up</button>
       </Link>
 
-      <Routes>
+      {/* <Routes>
         <Route
           path="/cart"
           element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />}
         />
-      </Routes>
+      </Routes> */}
     </div>
       <div>
        {/* Login Button */}
