@@ -1,32 +1,28 @@
+// CartPage.js
 import React from 'react';
+import Cart from './Cart';
+import './CartPage.css';
 
 function CartPage({ cartItems, removeFromCart }) {
+  const calculateTotalCost = () => {
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.unit_price;
+    });
+    return total;
+  };
+
   return (
     <div>
       <h2>Cart Page</h2>
-      {/* Implement cart page rendering here, similar to the Cart component */}
-      {/* You can reuse the code from the Cart component here */}
-      <div className="cart">
-        <h2>Cart</h2>
-        {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.id}>
-                <img src={item.product_full_image} alt={item.product_name} />
-                <div>
-                  <h3>{item.product_name}</h3>
-                  <p>Price: ${item.unit_price}</p>
-                  <button onClick={() => removeFromCart(item.id)}>Remove</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+      <div>
+        <h3>Total Cost: ${calculateTotalCost()}</h3>
       </div>
     </div>
   );
 }
 
 export default CartPage;
+
+

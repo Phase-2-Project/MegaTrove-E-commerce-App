@@ -5,7 +5,7 @@ import Cart from './Cart';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, addToCart, removeFromCart, searchTerm, setSearchTerm }) {
+function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
 
   return (
     <div className="navbar">
