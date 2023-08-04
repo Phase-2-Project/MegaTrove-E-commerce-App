@@ -6,6 +6,8 @@ import "./App.css";
 import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import { Route, Routes } from "react-router-dom";
+import CartPage from "./components/CartPage"; // Import the CartPage component
+
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -33,6 +35,7 @@ const App = () => {
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
       </Routes>
       <ItemList addToCart={addToCart} searchTerm={searchTerm} />
       <Footer />
@@ -41,3 +44,7 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
