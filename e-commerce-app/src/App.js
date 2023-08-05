@@ -7,6 +7,7 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import { Route, Routes } from "react-router-dom";
 import CartPage from "./components/CartPage"; // Import the CartPage component
+import { AuthProvider } from "./components/auth"
 
 
 const App = () => {
@@ -14,7 +15,9 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const addToCart = (item) => {
+    window.location.assign("/signup")
     setCartItems((prevCartItems) => [...prevCartItems, item]);
+
   };
 
   const removeFromCart = (itemId) => {
@@ -24,7 +27,9 @@ const App = () => {
   };
 
   return (
+    
     <div className="App">
+      <AuthProvider>
       <NavBar
         cartItems={cartItems}
         addToCart={addToCart}
@@ -36,10 +41,13 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
+        <Route path="/" element={<ItemList addToCart={addToCart} searchTerm={searchTerm} />} />
       </Routes>
-      <ItemList addToCart={addToCart} searchTerm={searchTerm} />
+      
       <Footer />
+      </AuthProvider>
     </div>
+    
   );
 };
 

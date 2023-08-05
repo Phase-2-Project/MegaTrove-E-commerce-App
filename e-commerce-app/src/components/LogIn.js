@@ -1,31 +1,48 @@
 import React, {useState} from "react";
+import axios from "axios"
 import {useSignIn} from "react-auth-kit"
+import { useAuth } from "./auth";
+import { useNavigate } from "react-router-dom";
 function LogIn(){
     const singIn= useSignIn()
+    
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",
         password:""
     })
-    function HandleSubmit(values){
-        values.preventDefault()
-            const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login'+values, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
+    async function HandleSubmit(e){
+        const auth = useAuth()
+        const navigate = useNavigate()
+        e.preventDefault()
+        try{
+            const response = await axios.post('http://ecommerce.muersolutions.com/api/v1/user/login',
+            formData)
             singIn({
                 token: response.data.token,
                 expiresIn: 3600,
                 tokenType: "Bearer",
-                authState: {email: values.email, password: values.password}
+                authState: {username: formData.username}
             })
 
+        }catch(err){
+            console.log("error ", err)
+        }
+        auth.login(formData)
+        window.location.assign('/')
+    }
+        
+            // const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(values)
+            // })
+            
             // .then(response => response.json())
             // .then(data => console.log(data))
             // .catch(error => console.log(error))
-    }
+    
     function handleChange(event){
         const key = event.target.id
         const value= event.target.value
@@ -39,9 +56,9 @@ function LogIn(){
             <table>
             <tr><td><label htmlFor="email">Email</label></td>
                 <td><input
-                    type='email'
-                    id='email'
-                    value={formData.email}
+                    type='username'
+                    id='username'
+                    value={formData.username}
                     onChange={handleChange}
                 /></td></tr>
                 
@@ -52,7 +69,7 @@ function LogIn(){
                     value={formData.password}
                     onChange={handleChange}
                 /></td></tr>
-                <tr><td><input type="submit" value="Sign Up"/></td></tr>
+                <tr><td><input type="submit" value="Log in"/></td></tr>
             </table>
         </form>
         </div>
