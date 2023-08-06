@@ -24,6 +24,14 @@ const App = () => {
     }
   };
 
+  const calculateTotalCost = () => {
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.unit_price;
+    });
+    return total;
+  };
+
   const removeFromCart = (index) => {
     setCartItems((prevCartItems) => {
       const newCartItems = [...prevCartItems];
@@ -52,6 +60,11 @@ const App = () => {
     });
   };
 
+  const handleCheckout = () => {
+    // Perform any necessary actions after successful payment
+    
+  };
+
   return (
     <div className="App">
       <NavBar
@@ -76,10 +89,7 @@ const App = () => {
           }
         />
       
-        <Route
-          path="/checkout"
-          element={<CheckoutPage cartItems={cartItems} />} // Pass cartItems to the CheckoutPage
-        />
+      <Route path="/checkout" element={<CheckoutPage cartItems={cartItems} totalCost={calculateTotalCost()} handleCheckout={handleCheckout} />} />
       </Routes>
       <ItemList addToCart={addToCart} searchTerm={searchTerm} />
       <Footer />
