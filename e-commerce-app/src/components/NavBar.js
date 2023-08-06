@@ -53,3 +53,12 @@ function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
 }
 
 export default NavBar;
+
+
+
+
+
+
+
+
+

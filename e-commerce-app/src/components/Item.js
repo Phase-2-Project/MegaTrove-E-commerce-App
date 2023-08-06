@@ -35,3 +35,9 @@ const Item = ({ item, addToCart }) => {
 export default Item;
 
 
+
+
+
+
+
+
