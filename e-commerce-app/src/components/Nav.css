@@ -1,71 +1,83 @@
-/* NavBar styles */
 .navbar {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 80px; /* Adjust height as needed */
-  background-color: #f8f8f8; /* Set the background color */
+  height: 80px;
+  background-color: #bee4a8;
   align-items: center;
-  justify-content: space-between; /* Distribute elements horizontally */
-  padding: 0 20px; /* Add some padding to the left and right */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px;
+  position: sticky;
+  z-index: 100;
+  top: 0;
 }
 
-/* Logo styles */
+
 .logo img {
   width: 80px;
   height: 80px;
-  border-radius: 50%; /* Make the logo image round */
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
-/* SearchBar styles */
+.store-name{
+  font-size: 36px; 
+  color: #333;
+  font-weight: inherit; 
+}
+
+.search {
+  flex: 1; 
+  margin: 0 220px; 
+}
+
 .search input {
   width: 100%;
   padding: 10px 20px;
   border: none;
-  border-radius: 20px; /* Add rounded corners */
-  background-color: #eaeaea; /* Set search input background color */
+  border-radius: 20px;
+  background-color: #eaeaea;
   font-size: 16px;
-  color: #333; /* Set text color */
+  color: #333;
   outline: none;
 }
 
-/* Cart-Icon styles */
 .cart-icon a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #333; /* Set cart icon color */
+  color: #333;
+  margin-right: 10px;
 }
 
 .nav-icon {
-  font-size: 28px; /* Increase the icon size slightly */
+  font-size: 28px;
   margin-right: 5px;
 }
 
-/* Sign Up and Login Button styles */
 .sign-in button,
 .log-in button {
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  background-color: #4caf50; /* Set button background color */
-  color: #fff; /* Set button text color */
+  background-color: #5c5959;
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .sign-in {
-  margin-right: 10px; /* Add some right margin to create space between Sign Up and Login */
+  margin-right: 10px;
 }
 
 .sign-in button:hover,
 .log-in button:hover {
-  background-color: #45a049; /* Change button background color on hover */
+  background-color: #272626;
 }
 
-/* Responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
   .search,
   .cart-icon,
@@ -80,3 +92,6 @@
     justify-content: flex-end;
   }
 }
+
+
+

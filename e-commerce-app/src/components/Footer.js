@@ -1,47 +1,53 @@
+
 import React from 'react';
-// import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-column">
         <h3>MegaTrove</h3>
-        <p>MegaTrove is your ultimate destination for online</p> 
-        <p> shopping, where you can discover a world of </p>
-        <p> trendy and unique products that perfectly </p>
-        <p>align with your personal style and preferences.</p> 
-        <p>From fashion-forward clothing and accessories to</p> 
-          <p>innovative gadgets and home decor, MegaTrove curates</p>
-         <p> a diverse collection to cater to every taste and vibe.</p>
+         <p>Your ultimate destination for trendy and unique online shopping</p>
         <p>Follow us</p>
-
-        {/* <div className="social-icons">
+        <div className="social-icons">
           <FaFacebook className="icon" />
           <FaInstagram className="icon" />
           <FaTwitter className="icon" />
-        </div> */}
-
-
-      </div>
-      <div className="footer-column">
-        <h3>Main Menu</h3>
-        <ul>
-          <li>Home</li>
-          <li>Products</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div className="footer-column">
-        <h3>Newsletter</h3>
-        <p>Stay updated with our latest products and offers!</p>
-        <div className="newsletter-form">
-          <input type="text" placeholder="Enter your email" />
-          <button>Sign Up</button>
         </div>
+
       </div>
+      <div className="help-center">
+        <h3>Help</h3>
+        <p>Help Centre</p>
+        <p>Contact Us</p>
+        <p>Shipping & Delivery</p>
+        <p>Returns</p>
+        </div>
+
+        <div className='account-details'>
+        <h3>Account</h3>
+        <p>My Account</p>
+        <p>Track Order</p>
+        <p>Returns</p>
+        <p>Personal Details</p>
+        </div>
+
+      <div className="company-details">
+      <h3>Company</h3>
+        <p>About Us</p>
+        <p>Terms & Conditions</p>
+        <p>Privacy Policy</p>
+        <p>Human Rights Statement</p>
+        </div>
+      
     </footer>
   );
 };
 
 export default Footer;
+
+
+
+
 

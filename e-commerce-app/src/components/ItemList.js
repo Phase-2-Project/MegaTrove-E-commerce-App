@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
-import Item from './Item';
+//THIS IS THE CODE IN USE NOW
+import React, { useEffect, useState } from "react";
+import Item from "./Item";
 
-const BASE_URL = 'http://ecommerce.muersolutions.com/api/v1';
+const BASE_URL = "http://ecommerce.muersolutions.com/api/v1";
 
-const ItemList = () => {
+const ItemList = ({ addToCart, searchTerm }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -12,25 +13,31 @@ const ItemList = () => {
     fetch(`${BASE_URL}/products`)
       .then((response) => response.json())
       .then((items) => setItems(items))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [searchTerm]);
 
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  // Filter items based on the searchTerm
+  const filteredItems = items.filter((item) =>
+    item.product_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Function to remove an item from the cart list
+  const handleRemoveFromCart = (index) => {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    setItems(updatedItems);
+  };
 
   return (
     <div className="item-list">
-      {items.map((item) => (
-        <React.Fragment key= {item.id}>
-        <Item  item={item} />
-        </React.Fragment>
-        
+      {filteredItems.map((item, index) => (
+        <div key={index}>
+          <Item item={item} addToCart={addToCart} />
+          {/* <button onClick={() => handleRemoveFromCart(index)}>Remove</button> */}
+        </div>
       ))}
     </div>
   );
 };
 
 export default ItemList;
-
-
-
-
-
