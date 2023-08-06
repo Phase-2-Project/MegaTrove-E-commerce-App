@@ -1,12 +1,16 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Item = ({ item, addToCart }) => {
+const Item = ({ item, addToCart, isLoggedIn }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleToggleDetails = () => {
     setShowDetails((prevShowDetails) => !prevShowDetails);
   };
+  function handleSignUp(){
+    window.location.assign("/signup")
+  }
 
   return (
     <div className="item">
@@ -27,7 +31,7 @@ const Item = ({ item, addToCart }) => {
 
       <div className="add-to-cart">
         
-        <button onClick={() => addToCart(item)}>Add to Cart</button>
+        <button onClick={() => {isLoggedIn? addToCart(item): handleSignUp()}}>Add to Cart</button>
         
       </div>
     </div>

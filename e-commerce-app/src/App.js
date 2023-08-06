@@ -13,9 +13,9 @@ import { AuthProvider } from "./components/auth"
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const addToCart = (item) => {
-    window.location.assign("/signup")
     setCartItems((prevCartItems) => [...prevCartItems, item]);
 
   };
@@ -36,12 +36,14 @@ const App = () => {
         removeFromCart={removeFromCart}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        setIsLoggedIn={setIsLoggedIn}
+        isLoggedIn={isLoggedIn}
       />
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/login" element={<LogIn setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
-        <Route path="/" element={<ItemList addToCart={addToCart} searchTerm={searchTerm} />} />
+        <Route path="/" element={<ItemList addToCart={addToCart} searchTerm={searchTerm} isLoggedIn={isLoggedIn}/>} />
       </Routes>
       
       <Footer />

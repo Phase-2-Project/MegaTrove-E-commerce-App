@@ -1,20 +1,21 @@
-import React from "react";
 import SearchBar from "./SearchBar";
 import { Link } from 'react-router-dom';
-import { useAuth } from "./auth";
-import { useNavigate } from "react-router-dom"
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm }) {
+function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn }) {
+  
+  // const auth = useAuth()
 
-  const auth = useAuth()
-
-  const navigate = useNavigate()
+  function handleLogin(){
+    window.location.assign("/")
+  } 
 
   function handleLogout() {
-    auth.logout()
-    navigate('/')
+    setIsLoggedIn(false)
+    window.location.assign("/login")
+    // auth.logout()
+    // navigate('/')
   }
   return (
     <div className="navbar">
@@ -39,16 +40,15 @@ function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm }) {
         </Link>
       </div>
       <div>
+      {isLoggedIn? <div ><Link to="/signup" className="sign-in"></Link>
+    <button onClick={handleLogout} className="log-in">Logout</button>
+  </div> : <div className="log-in"><button onClick={handleLogout}>Login</button></div>} 
         {/* Sign Up Button */}
         {/* <Link to="/signup" className="sign-in">
         <button>Sign Up</button>
       </Link> */}
       </div>
       <div>
-        {/* Login Button */}
-        {auth.user ? <button onClick={handleLogout}>Logout</button> : <Link to="/login" className="log-in">
-          <button>Login</button>
-        </Link>}
       </div>
     </div>
   );

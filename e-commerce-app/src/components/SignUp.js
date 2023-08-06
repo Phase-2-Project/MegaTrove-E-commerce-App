@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import "./accounts.css"
-import { useAuth } from "./auth";
-import { useNavigate } from "react-router-dom";
 
 
 
-function SignUp() {
+
+function SignUp({setIsLoggedIn}) {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
@@ -14,8 +13,8 @@ function SignUp() {
     })
 
     function HandleSubmit(e) {
-        const auth = useAuth()
-        const navigate = useNavigate()
+        // const auth = useAuth()
+        // const navigate = useNavigate()
         e.preventDefault()
         fetch('http://ecommerce.muersolutions.com/api/v1/user/signup', {
             method: 'POST',
@@ -27,12 +26,13 @@ function SignUp() {
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.log(error))
-        auth.login(formData)
-        window.location.assign("/")
+        // auth.login(formData)
+        // setIsLoggedIn(true)
+        // window.location.assign("/")
     }
 
 
-    function handleChange(event) {
+    function handleChange(event){
         const key = event.target.id
         const value = event.target.value
         setFormData({

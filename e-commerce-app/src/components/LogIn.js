@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import axios from "axios"
 import {useSignIn} from "react-auth-kit"
-import { useAuth } from "./auth";
-import { useNavigate } from "react-router-dom";
-function LogIn(){
+import NavBar from "./NavBar";
+function LogIn({setIsLoggedIn}){
+    
+
     const singIn= useSignIn()
     
     const [formData, setFormData] = useState({
@@ -11,8 +12,8 @@ function LogIn(){
         password:""
     })
     async function HandleSubmit(e){
-        const auth = useAuth()
-        const navigate = useNavigate()
+        // const auth = useAuth()
+        // const navigate = useNavigate()
         e.preventDefault()
         try{
             const response = await axios.post('http://ecommerce.muersolutions.com/api/v1/user/login',
@@ -27,8 +28,8 @@ function LogIn(){
         }catch(err){
             console.log("error ", err)
         }
-        auth.login(formData)
-        window.location.assign('/')
+        // window.location.assign("/")
+        setIsLoggedIn(true)
     }
         
             // const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login', {
