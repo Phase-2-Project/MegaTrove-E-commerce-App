@@ -19,6 +19,14 @@ const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
     setIsSubmitted(true);
   };
 
+  const calculateTotalCost = () => {
+    let total = 0;
+    purchasedItems.forEach((item) => {
+      total += item.unit_price * item.quantity;
+    });
+    return total;
+  };
+
   return (
     <div>
       <h2>Checkout</h2>
@@ -31,11 +39,13 @@ const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
             {purchasedItems.map((item, index) => (
               <li key={index}>
                 <span>{item.product_name}</span>
-                <span>Price: Ksh.{item.unit_price}</span>
-              </li>
+                  <span>Price: Ksh.{item.unit_price}</span>
+                  <span>Quantity: {item.quantity}</span>
+                  <span>Total: Ksh.{item.unit_price * item.quantity}</span>
+                </li>
             ))}
           </ul>
-          <h3>Total Cost: Ksh.{totalCost}</h3>
+          <h3>Total Cost: Ksh.{calculateTotalCost()}</h3>
         </div>
       </div>
       ) : (
