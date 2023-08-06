@@ -1,3 +1,4 @@
+
 import React, {useEffect, useState} from "react";
 import NavBar from "./NavBar";
 function LogIn(){
@@ -48,13 +49,14 @@ function LogIn(){
     }
     return (
         <div id="login">
-        <form >
+      
+        <form onSubmit={HandleSubmit}>
             <table>
             <tr><td><label htmlFor="email">Email</label></td>
                 <td><input
-                    type='username'
-                    id='username'
-                    value={formData.username}
+                    type='email'
+                    id='email'
+                    value={formData.email}
                     onChange={handleChange}
                 /></td></tr>
                 
@@ -71,4 +73,5 @@ function LogIn(){
         </div>
     )
 }
+
 export default LogIn
