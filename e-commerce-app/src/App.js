@@ -61,7 +61,6 @@ const App = () => {
   };
 
   const handleCheckout = () => {
-    // Perform any necessary actions after successful payment
     
   };
 
