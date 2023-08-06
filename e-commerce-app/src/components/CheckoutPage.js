@@ -7,11 +7,15 @@ const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [purchasedItems, setPurchasedItems] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     handleCheckout();
+
+    setPurchasedItems(cartItems);
+
     setIsSubmitted(true);
   };
 
@@ -19,7 +23,21 @@ const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
     <div>
       <h2>Checkout</h2>
       {isSubmitted ? (
+        <div>
         <h2>Payment was successful! Thank you for your purchase.</h2>
+        <div className="receipt">
+          <h3>Receipt:</h3>
+          <ul>
+            {purchasedItems.map((item, index) => (
+              <li key={index}>
+                <span>{item.product_name}</span>
+                <span>Price: Ksh.{item.unit_price}</span>
+              </li>
+            ))}
+          </ul>
+          <h3>Total Cost: Ksh.{totalCost}</h3>
+        </div>
+      </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <label>
