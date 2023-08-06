@@ -12,6 +12,8 @@ import CheckoutPage from "./components/CheckoutPage";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+
 
   const addToCart = (item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.product_name === item.product_name);
@@ -60,6 +62,8 @@ const App = () => {
         removeFromCart={removeFromCart}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        // setIsLoggedIn={setIsLoggedIn}
+        // isLoggedIn={isLoggedIn}
       />
       <Routes>
         <Route path="/signup" element={<SignUp />} />
