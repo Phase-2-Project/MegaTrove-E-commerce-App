@@ -1,12 +1,22 @@
-import React from "react";
 import SearchBar from "./SearchBar";
-import { Link, Route, Routes } from 'react-router-dom';
-import Cart from './Cart';
+import { Link } from 'react-router-dom';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
+function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm}) {
 
+  // const auth = useAuth()
+
+  // function handleLogin() {
+  //   window.location.assign("/")
+  // }
+
+  // function handleLogout() {
+  //   // setIsLoggedIn(false)
+  //   // window.location.assign("/login")
+  //   // auth.logout()
+  //   // navigate('/')
+  // }
   return (
     <div className="navbar">
       {/* Logo & Store Name*/}
@@ -15,7 +25,7 @@ function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
           src="https://i.pinimg.com/564x/5b/f9/1f/5bf91f056bbdf16b82f6d01c8045609b.jpg"
           alt=""
         />
-         
+
       </div>
       <div className="store-name">MegaTrove</div>
       {/* SearchBar */}
@@ -24,41 +34,24 @@ function NavBar({ cartItems,  removeFromCart, searchTerm, setSearchTerm }) {
       </div>
       {/* Cart-Icon */}
       <div className="cart-icon">
-      <Link to="/cart">
-      <span className="cart-badge">{cartItems.length}</span>
-            <BsCart2 className="nav-icon" color="black"/>
-            </Link>
+        <Link to="/cart">
+          <span className="cart-badge">{cartItems.length}</span>
+          <BsCart2 className="nav-icon" color="black" />
+        </Link>
       </div>
       <div>
-       {/* Sign Up Button */}
-      <Link to="/signup" className="sign-in">
-        <button>Sign Up</button>
-      </Link>
-
-      {/* <Routes>
-        <Route
-          path="/cart"
-          element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />}
-        />
-      </Routes> */}
-    </div>
+        <Link to="/login"><button>Login</button></Link>
+      </div>
       <div>
-       {/* Login Button */}
-      <Link to="/login" className="log-in">
-        <button>Login</button>
-      </Link>
-    </div>   
+        {/* {isLoggedIn ? <div ><Link to="/signup" className="sign-in"></Link>
+          <button onClick={handleLogout} className="log-in">Logout</button>
+        </div> : <div className="log-in"><button onClick={handleLogout}>Login</button></div>} */}
+
+
+      </div>
+
     </div>
   );
 }
 
 export default NavBar;
-
-
-
-
-
-
-
-
-
