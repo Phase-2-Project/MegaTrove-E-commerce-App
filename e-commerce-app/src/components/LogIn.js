@@ -1,60 +1,85 @@
-import React, {useState} from "react";
-import {useSignIn} from "react-auth-kit"
-function LogIn(){
-    const singIn= useSignIn()
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+function LogIn({ setIsLoggedIn, setUser }) {
+    // const [signedUpData, setSignedUpData] = useState([])
+
     const [formData, setFormData] = useState({
         email: "",
-        password:""
+        password: ""
     })
-    function HandleSubmit(values){
-        values.preventDefault()
-            const response= fetch('http://ecommerce.muersolutions.com/api/v1/user/login'+values, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            singIn({
-                token: response.data.token,
-                expiresIn: 3600,
-                tokenType: "Bearer",
-                authState: {email: values.email, password: values.password}
-            })
-
+   
+           function handleSubmit(e){
+            e.preventDefault()
+      
+            // fetch('http://localhost:3001/users', {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            // })
+    
             // .then(response => response.json())
-            // .then(data => console.log(data))
+            // .then(data => setSignedUpData(data))
             // .catch(error => console.log(error))
-    }
-    function handleChange(event){
+            const signUpData=JSON.parse(localStorage.getItem("formData"))
+    
+            //  const stringData =JSON.stringify(formData)
+            //  console.log(stringData)
+                // signedUpData.filter((user) => {
+                // const SignUpDetails =JSON.parse(user)
+                if (signUpData.email === formData.email && signUpData.password === formData.password) {
+                    alert("Welcome "  +signUpData.first_name)
+                    setIsLoggedIn(true)
+                    setUser(signUpData.first_name)
+                    // window.location.assign("/")
+                    return setIsLoggedIn
+                }
+                else {
+                    // setIsLoggedIn(false)
+                    alert("Invalid Credentials")
+                    return console.log(false)
+                }
+            }
+    
+               
+    
+    
+    
+
+    function handleChange(event) {
         const key = event.target.id
-        const value= event.target.value
+        const value = event.target.value
         setFormData({
             ...formData, [key]: value
         })
     }
     return (
         <div id="login">
-        <form onSubmit={HandleSubmit}>
-            <table>
-            <tr><td><label htmlFor="email">Email</label></td>
-                <td><input
-                    type='email'
-                    id='email'
-                    value={formData.email}
-                    onChange={handleChange}
-                /></td></tr>
-                
-            <tr><td><label htmlFor="password">Password</label></td>
-                <td><input
-                    type='password'
-                    id='password'
-                    value={formData.password}
-                    onChange={handleChange}
-                /></td></tr>
-                <tr><td><input type="submit" value="Sign Up"/></td></tr>
-            </table>
-        </form>
+
+            <form onSubmit={handleSubmit}>
+                <table>
+                    <tr><td><label htmlFor="email">Email</label></td>
+                        <td><input
+                            type='email'
+                            id='email'
+                            value={formData.email}
+                            onChange={handleChange}
+                        /></td></tr>
+
+                    <tr><td><label htmlFor="password">Password</label></td>
+                        <td><input
+                            type='password'
+                            id='password'
+                            value={formData.password}
+                            onChange={handleChange}
+                        /></td></tr>
+                    <tr><td><input className="log-in" type="submit" value="Log in" /></td></tr>
+                    <tr><td><NavLink to="/signup" >
+                        Don't have an account? SignUp
+                    </NavLink></td></tr>
+                </table>
+            </form>
         </div>
     )
 }

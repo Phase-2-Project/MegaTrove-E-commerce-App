@@ -7,6 +7,9 @@ const Item = ({ item, addToCart }) => {
   const handleToggleDetails = () => {
     setShowDetails((prevShowDetails) => !prevShowDetails);
   };
+  function handleSignUp(){
+    window.location.assign("/signup")
+  }
 
   return (
     <div className="item">
@@ -26,7 +29,9 @@ const Item = ({ item, addToCart }) => {
       </div>
 
       <div className="add-to-cart">
-        <button onClick={() => addToCart(item)}>Add to Cart</button>
+        
+        <button onClick={() => { addToCart(item)}}>Add to Cart</button>
+        
       </div>
     </div>
   );

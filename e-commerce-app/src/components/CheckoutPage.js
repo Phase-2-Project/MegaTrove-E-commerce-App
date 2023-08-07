@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CheckoutPage.css';
 
-const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
+const CheckoutForm = ({ cartItems, totalCost, handleCheckout, user}) => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
@@ -32,7 +32,7 @@ const CheckoutForm = ({ cartItems, totalCost, handleCheckout }) => {
       <h2>Checkout</h2>
       {isSubmitted ? (
         <div>
-        <h2>Payment was successful! Thank you for your purchase.</h2>
+        <h2>Payment was successful! Thank you  {user} for your purchase.</h2>
         <div className="receipt">
           <h3>Receipt:</h3>
           <ul>
