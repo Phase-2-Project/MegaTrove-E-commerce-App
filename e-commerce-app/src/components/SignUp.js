@@ -26,9 +26,9 @@ function SignUp({setIsLoggedIn}) {
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.log(error))
-        // auth.login(formData)
-        // setIsLoggedIn(true)
-        // window.location.assign("/")
+        localStorage.setItem("formData", JSON.stringify(formData));
+        alert("Registration Successfull")
+        window.location.assign('/login')
     }
 
 

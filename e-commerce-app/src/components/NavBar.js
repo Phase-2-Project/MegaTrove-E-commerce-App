@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm}) {
-
+function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn }) {
+  
   // const auth = useAuth()
 
-  // function handleLogin() {
-  //   window.location.assign("/")
-  // }
+  function handleLogin(){
+    window.location.assign("/login")
+  } 
 
-  // function handleLogout() {
-  //   // setIsLoggedIn(false)
-  //   // window.location.assign("/login")
-  //   // auth.logout()
-  //   // navigate('/')
-  // }
+  function handleLogout() {
+    setIsLoggedIn(false)
+  }
   return (
     <div className="navbar">
       {/* Logo & Store Name*/}
@@ -39,17 +36,15 @@ function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm}) {
           <BsCart2 className="nav-icon" color="black" />
         </Link>
       </div>
-      <div>
-        <Link to="/login"><button>Login</button></Link>
+      <div className="log-in">
+      {isLoggedIn?<button onClick={handleLogout} >Logout</button> : <button onClick={handleLogin}>Login</button>} 
+        {/* Sign Up Button */}
+        {/* <Link to="/signup" className="sign-in">
+        <button>Sign Up</button>
+      </Link> */}
       </div>
       <div>
-        {/* {isLoggedIn ? <div ><Link to="/signup" className="sign-in"></Link>
-          <button onClick={handleLogout} className="log-in">Logout</button>
-        </div> : <div className="log-in"><button onClick={handleLogout}>Login</button></div>} */}
-
-
       </div>
-
     </div>
   );
 }
