@@ -7,6 +7,7 @@ const Item = ({ item, addToCart }) => {
   const handleToggleDetails = () => {
     setShowDetails((prevShowDetails) => !prevShowDetails);
   };
+  
   function handleSignUp(){
     window.location.assign("/signup")
   }
