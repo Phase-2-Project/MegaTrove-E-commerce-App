@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Item = ({ item, addToCart, isLoggedIn }) => {
   const [showDetails, setShowDetails] = useState(false);

@@ -7,7 +7,7 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import { Route, Routes } from "react-router-dom";
 import CartPage from "./components/CartPage"; // Import the CartPage component
-import { AuthProvider } from "./components/auth"
+
 
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
   return (
     
     <div className="App">
-      <AuthProvider>
+      
       <NavBar
         cartItems={cartItems}
         addToCart={addToCart}
@@ -40,14 +40,13 @@ const App = () => {
         isLoggedIn={isLoggedIn}
       />
       <Routes>
-        <Route path="/signup" element={<SignUp setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} />} />
         <Route path="/" element={<ItemList addToCart={addToCart} searchTerm={searchTerm} isLoggedIn={isLoggedIn}/>} />
       </Routes>
       
       <Footer />
-      </AuthProvider>
     </div>
     
   );

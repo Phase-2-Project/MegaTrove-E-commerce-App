@@ -4,6 +4,7 @@ import "./accounts.css"
 
 
 
+
 function SignUp({setIsLoggedIn}) {
     const [formData, setFormData] = useState({
         first_name: "",
@@ -16,7 +17,7 @@ function SignUp({setIsLoggedIn}) {
         // const auth = useAuth()
         // const navigate = useNavigate()
         e.preventDefault()
-        fetch('http://ecommerce.muersolutions.com/api/v1/user/signup', {
+        fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,9 +27,9 @@ function SignUp({setIsLoggedIn}) {
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.log(error))
-        // auth.login(formData)
-        // setIsLoggedIn(true)
-        // window.location.assign("/")
+        localStorage.setItem("formData", JSON.stringify(formData));
+        alert("Registration Successfull")
+        window.location.assign('/login')
     }
 
 
@@ -82,4 +83,3 @@ function SignUp({setIsLoggedIn}) {
     )
 }
 export default SignUp
-

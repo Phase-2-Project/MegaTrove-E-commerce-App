@@ -8,14 +8,11 @@ function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm, isLogged
   // const auth = useAuth()
 
   function handleLogin(){
-    window.location.assign("/")
+    window.location.assign("/login")
   } 
 
   function handleLogout() {
     setIsLoggedIn(false)
-    window.location.assign("/login")
-    // auth.logout()
-    // navigate('/')
   }
   return (
     <div className="navbar">
@@ -39,10 +36,8 @@ function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm, isLogged
           <BsCart2 className="nav-icon" color="black" />
         </Link>
       </div>
-      <div>
-      {isLoggedIn? <div ><Link to="/signup" className="sign-in"></Link>
-    <button onClick={handleLogout} className="log-in">Logout</button>
-  </div> : <div className="log-in"><button onClick={handleLogout}>Login</button></div>} 
+      <div className="log-in">
+      {isLoggedIn?<button onClick={handleLogout} >Logout</button> : <button onClick={handleLogin}>Login</button>} 
         {/* Sign Up Button */}
         {/* <Link to="/signup" className="sign-in">
         <button>Sign Up</button>
