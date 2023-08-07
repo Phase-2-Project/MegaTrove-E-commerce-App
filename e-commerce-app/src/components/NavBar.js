@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, removeFromCart, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn }) {
+function NavBar({ cartItems, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn }) {
   
   // const auth = useAuth()
 
