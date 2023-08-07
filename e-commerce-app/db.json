@@ -47,25 +47,18 @@
       "id": 7
     },
     {
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "password": "",
-      "id": 8
+      "first_name": "nathan",
+      "last_name": "mawira",
+      "email": "nm@gmail.com",
+      "password": "12345",
+      "id": 11
     },
     {
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "password": "",
-      "id": 9
-    },
-    {
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "password": "",
-      "id": 10
+      "first_name": "moses",
+      "last_name": "kariuki",
+      "email": "kariukikamau10@gmail.com",
+      "password": "123456",
+      "id": 12
     }
   ]
 }

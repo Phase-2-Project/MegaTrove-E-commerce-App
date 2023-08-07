@@ -5,7 +5,7 @@ import Item from "./Item";
 
 const BASE_URL = "http://ecommerce.muersolutions.com/api/v1";
 
-const ItemList = ({ addToCart, searchTerm, isLoggedIn}) => {
+const ItemList = ({ addToCart, searchTerm}) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const ItemList = ({ addToCart, searchTerm, isLoggedIn}) => {
             return (
             <div >
           <React.Fragment key={item.id}>
-            <Item item={item} addToCart={addToCart} isLoggedIn={isLoggedIn}/>
+            <Item item={item} addToCart={addToCart}/>
           </React.Fragment>
           </div>
     )})

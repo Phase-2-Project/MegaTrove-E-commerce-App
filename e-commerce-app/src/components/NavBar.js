@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import "./Nav.css"
 import { BsCart2 } from "react-icons/bs"
 
-function NavBar({ cartItems, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn }) {
+function NavBar({ cartItems, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedIn, user}) {
   
   // const auth = useAuth()
+
 
   function handleLogin(){
     window.location.assign("/login")
@@ -36,14 +37,14 @@ function NavBar({ cartItems, searchTerm, setSearchTerm, isLoggedIn ,setIsLoggedI
           <BsCart2 className="nav-icon" color="black" />
         </Link>
       </div>
-      <div className="log-in">
-      {isLoggedIn?<button onClick={handleLogout} >Logout</button> : <button onClick={handleLogin}>Login</button>} 
+      <div className="sign-in">
         {/* Sign Up Button */}
-        {/* <Link to="/signup" className="sign-in">
+        <Link to="/signup" >
         <button>Sign Up</button>
-      </Link> */}
+      </Link>
       </div>
-      <div>
+      <div className="log-in">
+      {isLoggedIn?<button onClick={handleLogout} >Logout {user}</button> : <button onClick={handleLogin}>Login</button>} 
       </div>
     </div>
   );

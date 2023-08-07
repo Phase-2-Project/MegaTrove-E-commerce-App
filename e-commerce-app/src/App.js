@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
@@ -12,7 +12,49 @@ import CheckoutPage from "./components/CheckoutPage";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const[isLoggedin, setIsLoggedIn]= useState(false)
+  const[isLoggedIn, setIsLoggedIn]= useState(false)
+  const [user, setUser] = useState([])
+  
+  useEffect(() => {
+    if(isLoggedIn){
+        
+     return (
+        <div className="App">
+      <NavBar
+        cartItems={cartItems}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        user={user}
+      />
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>} />
+        <Route
+          path="/cart"
+          element={
+            <CartPage
+              cartItems={cartItems}
+              removeFromCart={removeFromCart}
+              handleIncrease={handleIncrease}
+              handleDecrease={handleDecrease}
+            />
+          }
+        />
+      
+      <Route path="/checkout" element={<CheckoutPage cartItems={cartItems} totalCost={calculateTotalCost()} handleCheckout={handleCheckout} user={user}/>} />
+      </Routes>
+      <ItemList addToCart={addToCart} searchTerm={searchTerm} />
+      <Footer />
+    </div>
+     )
+       
+    }
+  }, [])
+  
 
   const addToCart = (item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.product_name === item.product_name);
@@ -79,12 +121,13 @@ const App = () => {
         removeFromCart={removeFromCart}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        isLoggedIn={isLoggedin}
+        isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
+        user={user}
       />
       <Routes>
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn isLoggedin={isLoggedin}/>} />
+        <Route path="/login" element={<LogIn setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>} />
         <Route
           path="/cart"
           element={
@@ -97,9 +140,10 @@ const App = () => {
           }
         />
       
-      <Route path="/checkout" element={<CheckoutPage cartItems={cartItems} totalCost={calculateTotalCost()} handleCheckout={handleCheckout} />} />
+      <Route path="/checkout" element={<CheckoutPage cartItems={cartItems} totalCost={calculateTotalCost()} handleCheckout={handleCheckout} user={user}/>} />
       </Routes>
       <ItemList addToCart={addToCart} searchTerm={searchTerm} />
+      
       <Footer />
     </div>
   );
