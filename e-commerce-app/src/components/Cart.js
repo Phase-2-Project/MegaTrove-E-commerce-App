@@ -1,33 +1,38 @@
-// Cart.js
 import React from 'react';
 import './Cart.css';
 
-function Cart({ cartItems, removeFromCart }) {
-  const handleRemoveFromCart = (itemId) => {
-    removeFromCart(itemId);
+function Cart({ cartItems, removeFromCart, handleIncrease, handleDecrease }) {
+  const handleRemoveFromCart = (index) => {
+    removeFromCart(index);
   };
 
   return (
     <div className="cart">
-      <h2>Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item.id}> {/* Add the 'key' prop to the <li> element */}
-              <img src={item.product_full_image} alt={item.product_name} />
-              <div>
-                <h3>{item.product_name}</h3>
-                <p>Price: Ksh.{item.unit_price}</p>
-                <div className="add-cart">
-                <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+      <ul>
+        {cartItems.map((item, index) => (
+          <li key={index}>
+            <img src={item.product_full_image} alt={item.product_name} />
+            <div>
+              <h3>{item.product_name}</h3>
+              <p>Price: Ksh.{item.unit_price}</p>
+              <div className="add-cart">
+                <div className="quantity-control">
+                  <button className="decrease-button" onClick={() => handleDecrease(index)}>
+                    -
+                  </button>
+                  <span className="quantity">{item.quantity}</span>
+                  <button className="increase-button" onClick={() => handleIncrease(index)}>
+                    +
+                  </button>
+                  <button className="remove-button" onClick={() => handleRemoveFromCart(index)}>
+                    Remove
+                  </button>
                 </div>
               </div>
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

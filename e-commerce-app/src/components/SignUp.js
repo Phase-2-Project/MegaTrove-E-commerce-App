@@ -4,8 +4,7 @@ import "./accounts.css"
 
 
 
-
-function SignUp({setIsLoggedIn}) {
+function SignUp() {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
@@ -17,16 +16,16 @@ function SignUp({setIsLoggedIn}) {
         // const auth = useAuth()
         // const navigate = useNavigate()
         e.preventDefault()
-        fetch('http://localhost:3001/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error))
+        // fetch('http://localhost:3001/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(formData)
+        // })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        //     .catch(error => console.log(error))
         localStorage.setItem("formData", JSON.stringify(formData));
         alert("Registration Successfull")
         window.location.assign('/login')

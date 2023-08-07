@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
 
-const Item = ({ item, addToCart, isLoggedIn }) => {
+const Item = ({ item, addToCart }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleToggleDetails = () => {
     setShowDetails((prevShowDetails) => !prevShowDetails);
   };
+  
   function handleSignUp(){
     window.location.assign("/signup")
   }
@@ -30,7 +31,7 @@ const Item = ({ item, addToCart, isLoggedIn }) => {
 
       <div className="add-to-cart">
         
-        <button onClick={() => {isLoggedIn? addToCart(item): handleSignUp()}}>Add to Cart</button>
+        <button onClick={() => { addToCart(item)}}>Add to Cart</button>
         
       </div>
     </div>
@@ -38,5 +39,11 @@ const Item = ({ item, addToCart, isLoggedIn }) => {
 };
 
 export default Item;
+
+
+
+
+
+
 
 
